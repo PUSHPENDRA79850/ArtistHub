@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login / Sign Up - ArtistHub</title>
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .auth-section{
+            min-height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            padding:140px 8% 80px;
+        }
+
+        .auth-box{
+            background:#191919;
+            padding:45px;
+            border-radius:20px;
+            max-width:420px;
+            width:100%;
+            text-align:center;
+            box-shadow:0 20px 50px rgba(0,0,0,.4);
+            border:1px solid rgba(255,255,255,.08);
+        }
+
+        .auth-box h2{
+            font-size:26px;
+            margin-bottom:8px;
+        }
+
+        .auth-box > p{
+            color:#bbb;
+            font-size:14px;
+            margin-bottom:25px;
+        }
+
+        .auth-form{
+            display:flex;
+            flex-direction:column;
+            text-align:left;
+        }
+
+        .auth-form label{
+            font-size:13px;
+            color:#ccc;
+            margin-bottom:6px;
+            margin-top:14px;
+            display:block;
+        }
+
+        .auth-form input{
+            width:100%;
+            padding:12px 16px;
+            border-radius:10px;
+            border:1px solid rgba(255,255,255,.1);
+            background:#0f0f0f;
+            color:#fff;
+            outline:none;
+            font-size:14px;
+            transition:.3s;
+        }
+
+        .auth-form input:focus{
+            border-color:#ff2e63;
+        }
+
+        .auth-form input::placeholder{
+            color:#777;
+        }
+
+        .field-error{
+            color:#ff2e63;
+            font-size:12px;
+            margin-top:4px;
+            display:none;
+        }
+
+        .field-error.show{
+            display:block;
+        }
+
+        .hidden-field{
+            display:none;
+        }
+
+        .auth-btn{
+            margin-top:25px;
+            padding:13px;
+            background:#ff2e63;
+            color:#fff;
+            border:none;
+            border-radius:30px;
+            font-weight:600;
+            font-size:15px;
+            cursor:pointer;
+            transition:.3s;
+            width:100%;
+        }
+
+        .auth-btn:hover{
+            background:#ff4b7d;
+        }
+
+        .switch-auth{
+            margin-top:20px;
+            color:#bbb;
+            font-size:13px;
+        }
+
+        .switch-auth span{
+            color:#ff2e63;
+            font-weight:600;
+            cursor:pointer;
+        }
+
+        .switch-auth span:hover{
+            text-decoration:underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            <h2>Artist<span>Hub</span></h2>
+        </div>
+
+        <nav>
+    <ul>
+        <li><a href="ArtistHub.html#hero">Home</a></li>
+        <li><a href="ArtistHub.html#artists">Artists</a></li>
+        <li><a href="ArtistHub.html#searchbox">About</a></li>
+        <li><a href="ArtistHub.html#helpline">Contact</a></li>
+    </ul>
+</nav>
+
+        <div class="buttons">
+            <a href="auth.html"><button class="login">Login</button></a>
+            <a href="auth.html"><button class="signup">Sign Up</button></a>
+        </div>
+    </header>
+
+    <section class="auth-section">
+
+        <div class="auth-box">
+
+            <h2 id="authHeading">Welcome Back</h2>
+            <p id="authSubtext">Login to book your favourite artists</p>
+
+            <form class="auth-form" id="authForm">
+
+                <div id="nameField" class="hidden-field">
+                    <label>Full Name</label>
+                    <input type="text" id="name" placeholder="Enter your full name">
+                    <span class="field-error" id="nameError">Naam daalna zaroori hai</span>
+                </div>
+
+                <label>Email Address</label>
+                <input type="email" id="email" placeholder="Enter your email">
+                <span class="field-error" id="emailError">Sahi email daalo</span>
+
+                <div id="phoneField" class="hidden-field">
+                    <label>Phone Number</label>
+                    <input type="tel" id="phone" placeholder="Enter your phone number">
+                    <span class="field-error" id="phoneError">Phone number daalna zaroori hai</span>
+                </div>
+
+                <label>Password</label>
+                <input type="password" id="password" placeholder="Enter your password">
+                <span class="field-error" id="passwordError">Password kam se kam 6 characters ka ho</span>
+
+                <button type="submit" class="auth-btn" id="submitBtn">Login</button>
+
+            </form>
+
+            <p class="switch-auth" id="switchText">
+                Don't have an account? <span id="switchLink">Sign Up</span>
+            </p>
+
+        </div>
+
+    </section>
+  
+    <footer>
+        <h2>ArtistHub</h2>
+        <p>Book your favourite artists in just one click.</p>
+        <div class="social">
+            <i class="fab fa-facebook"></i>
+            <i class="fab fa-instagram"></i>
+            <i class="fab fa-youtube"></i>
+            <i class="fab fa-twitter"></i>
+        </div>
+        <p>© 2026 ArtistHub. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        let mode = "login";
+
+        const authHeading = document.getElementById("authHeading");
+        const authSubtext = document.getElementById("authSubtext");
+        const nameField = document.getElementById("nameField");
+        const phoneField = document.getElementById("phoneField");
+        const submitBtn = document.getElementById("submitBtn");
+        const switchText = document.getElementById("switchText");
+        const authForm = document.getElementById("authForm");
+
+        function attachSwitchHandler() {
+            const link = document.getElementById("switchLink");
+            link.addEventListener("click", () => {
+                mode = mode === "login" ? "signup" : "login";
+                updateUI();
+            });
+        }
+
+        function updateUI() {
+            if (mode === "login") {
+                authHeading.textContent = "Welcome Back";
+                authSubtext.textContent = "Login to book your favourite artists";
+                nameField.classList.add("hidden-field");
+                phoneField.classList.add("hidden-field");
+                submitBtn.textContent = "Login";
+                switchText.innerHTML = "Don't have an account? <span id=\"switchLink\">Sign Up</span>";
+            } else {
+                authHeading.textContent = "Create Account";
+                authSubtext.textContent = "Join ArtistHub and start booking amazing artists";
+                nameField.classList.remove("hidden-field");
+                phoneField.classList.remove("hidden-field");
+                submitBtn.textContent = "Sign Up";
+                switchText.innerHTML = "Already have an account? <span id=\"switchLink\">Login</span>";
+            }
+            attachSwitchHandler();
+        }
+
+        attachSwitchHandler();
+
+        authForm.addEventListener("submit", function (e) {
+            e.preventDefault();
+            let valid = true;
+
+            const email = document.getElementById("email");
+            const password = document.getElementById("password");
+            const name = document.getElementById("name");
+            const phone = document.getElementById("phone");
+
+            document.querySelectorAll(".field-error").forEach(el => el.classList.remove("show"));
+
+            if (mode === "signup" && name.value.trim() === "") {
+                document.getElementById("nameError").classList.add("show");
+                valid = false;
+            }
+
+            if (email.value.trim() === "" || !/\S+@\S+\.\S+/.test(email.value)) {
+                document.getElementById("emailError").classList.add("show");
+                valid = false;
+            }
+
+            if (mode === "signup" && phone.value.trim() === "") {
+                document.getElementById("phoneError").classList.add("show");
+                valid = false;
+            }
+
+            if (password.value.trim() === "" || password.value.length < 6) {
+                document.getElementById("passwordError").classList.add("show");
+                valid = false;
+            }
+
+            if (!valid) return;
+
+            alert(mode === "login" ? "Login successful (demo)" : "Account created successfully (demo)");
+        });
+    </script>
+    
+
+</body>
+
+</html>
